@@ -31,11 +31,34 @@
     <section class="home-section">
         <div class="home-header">
             <p class="home-heads">Analytics & Insights</p>
-            <img src="{% static 'Images/MoreIcon.png' %}" alt="See More" onclick="analytics()">
+            <a href="/transactions">
+                <img src="{% static 'Images/MoreIcon.png' %}" alt="See More" class="seeMore">
+            </a>
         </div>
         <div class="analytics-cards">
-            <div class="analytic-card">
-                
+            <div class="analytics-card">
+                <p class="msg">Warning!</p>
+                <p class="pname">Product 1</p>
+                <p class="currentStock">Current Stock: 2</p>
+            </div>
+            <div class="analytics-card">
+                <p class="msg">Warning!</p>
+                <p class="pname">Product 2</p>
+                <p class="currentStock">Current Stock: 1</p>
+            </div>
+            <div class="analytics-card">
+                <p class="msg">Warning!</p>
+                <p class="pname">Product 8</p>
+                <p class="currentStock">Current Stock: 0</p>
+            </div>
+        </div>
+        <div class="home-header">
+            <p class="home-heads">Transactions</p>
+            <img src="{% static 'Images/MoreIcon.png' %}" alt="See More" onclick="analytics()">
+        </div>
+        <div class="transaction-cards">
+            <div class="transaction-card">
+
             </div>
         </div>
     </section>

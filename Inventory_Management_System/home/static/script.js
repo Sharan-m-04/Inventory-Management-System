@@ -1,4 +1,4 @@
-//Navigation Burgur
+// Navigation Burgur
 burger = document.querySelector('.burger');
 navig = document.querySelector('.navig');
 navul = document.querySelector('.navul');
