@@ -29,7 +29,15 @@
     </header>
 
     <section class="home-section">
-
+        <div class="home-header">
+            <p class="home-heads">Analytics & Insights</p>
+            <img src="{% static 'Images/MoreIcon.png' %}" alt="See More" onclick="analytics()">
+        </div>
+        <div class="analytics-cards">
+            <div class="analytic-card">
+                
+            </div>
+        </div>
     </section>
 
     <section class="about-section" id="about">
@@ -63,15 +71,15 @@
         <div class="footer-content">
             <p>Developed by Sharan M & Suhas K A</p>
             <nav>
-              <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="/inventory">Inventory</a></li>
-                <li><a href="/transactions">Transactions</a></li>
-              </ul>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="/inventory">Inventory</a></li>
+                    <li><a href="/transactions">Transactions</a></li>
+                </ul>
             </nav>
             <p>Inventory Management System</p>
-          </div>
+        </div>
     </footer>
 
     <script src="{% static 'script.js' %}" type="text/javascript"></script>
