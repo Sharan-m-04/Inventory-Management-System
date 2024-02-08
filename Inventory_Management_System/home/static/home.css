@@ -17,7 +17,7 @@ html {
 
 /* Navigation Section */
 .header {
-    background-color: #dcf8ff;
+    background-color: #cfdeff;
     /* filter: blur(4px); */
     backdrop-filter: blur(5px);
     padding: 5px;
@@ -49,13 +49,13 @@ html {
 
 .navc a {
     text-decoration: none;
-    color: #00333a;
+    color: #00143c;
     font-size: 18px;
     font-family: 'poppins', sans-serif;
 }
 
 .navc a:hover {
-    color: #008b9f;
+    color: #003db8;
 }
 
 .burger {
@@ -73,6 +73,25 @@ html {
     width: 33px;
     height: 4px;
     margin: 5px 5px;
+}
+
+.navs {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logout {
+    text-decoration: none;
+    color: #00143c;
+    display: block;
+    margin: 10px;
+}
+
+.logout:hover {
+    color: #003db8;
+    cursor: pointer;
 }
 
 /* Home section */
@@ -104,7 +123,7 @@ html {
 }
 
 .analytics-card {
-    background-color: #f0fcff;
+    background-color: #f3f6ff;
     border-radius: 20px;
     padding: 15px;
     height: 200px;
@@ -124,80 +143,19 @@ html {
 .pname {
     font-size: 22px;
     font-weight: bold;
-    color: #001e22;
+    color: #00143c;
 }
 
 .currentStock {
     font-size: 16px;
-    color: #6a919b;
-}
-
-/* About section */
-
-.about-section {
-    padding: 20px; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0fcff;
-    border-radius: 10px;
-    min-height: 100vh;
-    text-align: center;
-}
-
-.title {
-    color: #00282e;
-    margin-bottom: 10px;
-    font-size: 40px;
-}
-
-.description {
-    color: #00282e;
-    margin-bottom: 10px;
-    font-size: 16px;
-    width: 80%;
-}
-
-.features {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    width: 70%;
-}
-
-.feature {
-    flex: 1;
-    padding: 20px;
-    margin: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.feature:hover {
-    transform: translateY(-5px);
-    cursor: pointer;
-}
-
-.feature-title {
-    color: #00333a;
-    font-size: 20px;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.feature-description {
-    color: #00282e;
-    text-align: center;
-    font-size: 16px;
+    color: #7499f1;
 }
 
 /* Footer */
 
 footer {
-    background-color: #001e22;
-    color: #b7f2ff;
+    background-color: #000d26;
+    color: #a2c1ff;
     padding: 20px 0;
     text-align: center;
     font-size: 14px;
@@ -223,12 +181,12 @@ footer {
 
 .footer-content nav ul li a {
     text-decoration: none;
-    color: #b7f2ff;
+    color: #a2c1ff;
     font-size: 16px;
 }
 
 .footer-content nav ul li a:hover {
-    color: #daf8ff;
+    color: #dfeaff;
 }
 
 .footer-content p {

@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management System | Home</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}" type="text/css">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navig h-nav-resp">
+            <a href="/dashboard"><img src="{% static 'Images/logo.png' %}" alt="Logo" class="logo"></a>
+            <div class="navs">
+                <ul class="navul v-class-resp">
+                    <li class="navc"><a href="/dashboard">Dashboard</a></li>
+                    <li class="navc"><a href="/inventory">Inventory</a></li>
+                    <li class="navc"><a href="/transactions">Transactions</a></li>
+                </ul>
+                <div class="logout" onclick="logout()">Log out</div>
+            </div>
+            <div class="burger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="home-section">
+        <div class="home-header">
+            <p class="home-heads">Stocks</p>
+            <a href="/inventory">
+                <img src="{% static 'Images/MoreIcon.png' %}" alt="See More" class="seeMore">
+            </a>
+        </div>
+        <div class="analytics-cards">
+            <div class="analytics-card">
+                <p class="msg">Warning!</p>
+                <p class="pname">Product 1</p>
+                <p class="currentStock">Current Stock: 2</p>
+            </div>
+            <div class="analytics-card">
+                <p class="msg">Warning!</p>
+                <p class="pname">Product 2</p>
+                <p class="currentStock">Current Stock: 1</p>
+            </div>
+            <div class="analytics-card">
+                <p class="msg">Warning!</p>
+                <p class="pname">Product 8</p>
+                <p class="currentStock">Current Stock: 0</p>
+            </div>
+        </div>
+        <div class="home-header">
+            <p class="home-heads">Transactions</p>
+            <img src="{% static 'Images/MoreIcon.png' %}" alt="See More" onclick="analytics()">
+        </div>
+        <div class="transaction-cards">
+            <div class="transaction-card">
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>Developed by Sharan M & Suhas K A</p>
+            <nav>
+                <ul>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/inventory">Inventory</a></li>
+                    <li><a href="/transactions">Transactions</a></li>
+                </ul>
+            </nav>
+            <p>Inventory Management System</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'home.js' %}" type="text/javascript"></script>
+</body>
+
+</html>

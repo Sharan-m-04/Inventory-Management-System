@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management System | Login</title>
+    <link rel="stylesheet" href="{% static 'login.css' %}" type="text/css">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" >
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="/accounts/login/" method="post">
+
+            {% csrf_token %}
+
+            <div class="input-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <a href="../signup" class="link">Don't have an account? Create One !</a>
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+    </div>
+</body>
+</html>
