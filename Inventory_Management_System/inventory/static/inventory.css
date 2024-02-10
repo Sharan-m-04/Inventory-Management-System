@@ -153,6 +153,14 @@ html {
     cursor: pointer;
 }
 
+.deleteBtn {
+    margin-left: 20%;
+}
+
+.deleteBtn:hover {
+    cursor: pointer;
+}
+
 /* Footer */
 
 footer {
