@@ -33,10 +33,10 @@
 
     <section class="home-section">
         <div class="home-header">
-            <p class="home-heads">Stocks</p>
-            <a href="/inventory">
-                <img src="{% static 'Images/MoreIcon.png' %}" alt="See More" class="seeMore">
-            </a>
+            <p class="home-heads">Stocks Overview</p>
+            <!-- <a href="/inventory"> -->
+                <img src="{% static 'Images/MoreIcon.png' %}" alt="See More" class="seeMore" onclick="inventoryRedir()">
+            <!-- </a> -->
         </div>
         <div class="analytics-cards">
             <div class="analytics-card">
@@ -57,7 +57,9 @@
         </div>
         <div class="home-header">
             <p class="home-heads">Transactions</p>
-            <img src="{% static 'Images/MoreIcon.png' %}" alt="See More" onclick="analytics()">
+            <!-- <a href="/transactions"> -->
+                <img src="{% static 'Images/MoreIcon.png' %}" alt="See More" class="seeMore" onclick="transactionsRedir()">
+            <!-- </a> -->
         </div>
         <div class="transaction-cards">
             <div class="transaction-card">

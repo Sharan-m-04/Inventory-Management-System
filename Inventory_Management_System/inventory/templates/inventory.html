@@ -1,13 +1,74 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Management System | Inventory</title>
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" >
+    <link rel="stylesheet" href="{% static 'inventory.css' %}" type="text/css">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}">
 </head>
+
 <body>
-    Inventory
+    <header class="header">
+        <nav class="navig h-nav-resp">
+            <a href="/dashboard"><img src="{% static 'Images/logo.png' %}" alt="Logo" class="logo"></a>
+            <div class="navs">
+                <ul class="navul v-class-resp">
+                    <li class="navc"><a href="/dashboard">Dashboard</a></li>
+                    <li class="navc"><a href="/inventory">Inventory</a></li>
+                    <li class="navc"><a href="/transactions">Transactions</a></li>
+                </ul>
+                <div class="logout" onclick="logout()">Log out</div>
+            </div>
+            <div class="burger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="main-content">
+        <div class="head-cont">
+            <input type="text" placeholder="Search Products" class="searchField">
+            <i class="fa-solid fa-plus createBtn"></i>
+        </div>
+        <div class="table">
+            <table class="productTable">
+                <tr>
+                    <th class="tableHead">Product Name</th>
+                    <th class="tableHead">Price (in ₹)</th>
+                    <th class="tableHead">Available Quantity</th>
+                    <th class="tableHead">Product Id</th>
+                </tr>
+                <tr>
+                    <td class="tableData">Product 1</td>
+                    <td class="tableData">199</td>
+                    <td class="tableData">2</td>
+                    <td class="tableData">145</td>
+                    <td class="tableData"><i class="fa-solid fa-pen editBtn"></i></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>Developed by Sharan M & Suhas K A</p>
+            <nav>
+                <ul>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/inventory">Inventory</a></li>
+                    <li><a href="/transactions">Transactions</a></li>
+                </ul>
+            </nav>
+            <p>Inventory Management System</p>
+        </div>
+    </footer>
+    <script src="{% static 'inventory.js' %}" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/89af5da05d.js" crossorigin="anonymous"></script>
 </body>
+
 </html>
