@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management System | Edit Product</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        .container {
+            max-width: 30%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f3f6ff;
+            border-radius: 15px;
+            text-align: center;
+            font-family: 'Poppins', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #00143c;
+            font-size: 40px;
+        }
+
+        .contact-form {
+            text-align: left;
+            color: #00143c;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"]
+        {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #e3eaff;
+            border-radius: 15px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 30px 10px 30px;
+            border-radius: 50px;
+            background-color: #7499f1;
+            color: white;
+            border: none;
+            font-size: 16px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #a3bfff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="edit-section">
+        <div class="container">
+            <h1>Edit Product</h1>
+            <form action="{% url 'edit_product' product.prod_id %}" class="contact-form" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Product Name:</label>
+                    <input type="text" id="name" name="name" value="{{ product.prod_name }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="number" id="price" name="price" value="{{ product.price }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" value="{{ product.quantity }}" required>
+                </div>
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </section>
+
+</body>
+
+</html>

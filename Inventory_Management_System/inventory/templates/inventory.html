@@ -32,13 +32,16 @@
 
     <section class="main-content">
         <div class="head-cont">
-            <input type="text" placeholder="Search Products" class="searchField">
+            <input type="text" placeholder="Search Products" class="searchField" id="searchInput">
             {% if user.is_authenticated and user.is_superuser %}
-                <i class="fa-solid fa-plus createBtn"></i>
+            <form action="{% url 'add_product' %}" method="get">
+                {% csrf_token %}
+                <button class="editBtn fa-btn" type="submit"><i class="fa-solid fa-plus createBtn"></i></button>
+            </form>
             {% endif %}
         </div>
         <div class="table">
-            <table class="productTable">
+            <table class="productTable" id="productTable">
                 <tr>
                     <th class="tableHead">Product Name</th>
                     <th class="tableHead">Price (in ₹)</th>
@@ -51,10 +54,16 @@
                     <td class="tableData">{{ product.price }}</td>
                     <td class="tableData">{{ product.quantity }}</td>
                     <td class="tableData">{{ product.prod_id }}</td>
-                    <td class="tableData">
-                        <i class="fa-solid fa-pen editBtn"></i>
+                    <td class="tableData btns">
+                        <form action="{% url 'edit_product' product.prod_id %}" method="get">
+                            {% csrf_token %}
+                            <button class="editBtn fa-btn" type="submit"><i class="fa-solid fa-pen"></i></button>
+                        </form>
                         {% if user.is_authenticated and user.is_superuser %}
-                            <i class="fa-solid fa-trash deleteBtn"></i>
+                        <form action="{% url 'delete_product' product.prod_id %}" method="get">
+                            {% csrf_token %}
+                            <button class="deleteBtn fa-btn" type="submit" data-is-superuser="{{ user.is_superuser|yesno:'true,false' }}"><i class="fa-solid fa-trash"></i></button>
+                        </form>
                         {% endif %}
                     </td>
                 </tr>

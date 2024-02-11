@@ -142,7 +142,7 @@ html {
     padding: 8px;
 }
 
-.tableHead, tr, td {
+.tableHead, tr, .tableData {
     border-top: 1px solid #afc8ff;
     border-bottom: 1px solid #afc8ff;
     text-align: center;
@@ -159,6 +159,18 @@ html {
 
 .deleteBtn:hover {
     cursor: pointer;
+}
+
+.fa-btn {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.btns {
+    display: flex;
+    border: none;
+    justify-content: space-evenly;
 }
 
 /* Footer */
