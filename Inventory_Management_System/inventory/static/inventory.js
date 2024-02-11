@@ -7,3 +7,7 @@ burger.addEventListener('click', () => {
     navul.classList.toggle('v-class-resp');
     navig.classList.toggle('h-nav-resp');
 });
+
+function logout() {
+    window.open('/accounts/logout', '_self');
+}

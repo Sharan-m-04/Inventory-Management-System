@@ -6,7 +6,7 @@ from django.contrib.auth.models import User, auth
 
 def signup(request):
     if request.method == 'POST':
-        name = request.POST['name']
+        name = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
 
@@ -17,7 +17,7 @@ def signup(request):
 
 def login(request):
     if request.method == 'POST':
-        name = request.POST['name']
+        name = request.POST['username']
         password = request.POST['password']
 
         isUser = auth.authenticate(username=name, password=password)

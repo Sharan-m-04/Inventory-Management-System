@@ -33,7 +33,9 @@
     <section class="main-content">
         <div class="head-cont">
             <input type="text" placeholder="Search Products" class="searchField">
-            <i class="fa-solid fa-plus createBtn"></i>
+            {% if user.is_authenticated and user.is_superuser %}
+                <i class="fa-solid fa-plus createBtn"></i>
+            {% endif %}
         </div>
         <div class="table">
             <table class="productTable">
@@ -43,16 +45,20 @@
                     <th class="tableHead">Available Quantity</th>
                     <th class="tableHead">Product Id</th>
                 </tr>
+                {% for product in products %}
                 <tr>
-                    <td class="tableData">Product 1</td>
-                    <td class="tableData">199</td>
-                    <td class="tableData">2</td>
-                    <td class="tableData">145</td>
+                    <td class="tableData">{{ product.prod_name }}</td>
+                    <td class="tableData">{{ product.price }}</td>
+                    <td class="tableData">{{ product.quantity }}</td>
+                    <td class="tableData">{{ product.prod_id }}</td>
                     <td class="tableData">
                         <i class="fa-solid fa-pen editBtn"></i>
-                        <i class="fa-solid fa-trash deleteBtn"></i>
+                        {% if user.is_authenticated and user.is_superuser %}
+                            <i class="fa-solid fa-trash deleteBtn"></i>
+                        {% endif %}
                     </td>
                 </tr>
+                {% endfor %}
             </table>
         </div>
     </section>
