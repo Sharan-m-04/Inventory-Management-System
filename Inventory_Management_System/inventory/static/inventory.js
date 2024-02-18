@@ -32,7 +32,6 @@ function updateProductTable(products) {
     var tableBody = document.querySelector("#productTable tbody");
     tableBody.innerHTML = "";
 
-    // Add table headers
     var headers = "<tr>" +
         "<th class='tableHead'>Product Name</th>" +
         "<th class='tableHead'>Price (in ₹)</th>" +
@@ -42,7 +41,14 @@ function updateProductTable(products) {
         "</tr>";
     tableBody.innerHTML += headers;
 
-    // Add product rows
+    if (products.length === 0) {
+        var noProductRow = "<tr><td colspan='6'><p style='font-size: 20px;'>Product Not Found</p></td></tr>";
+        tableBody.innerHTML += noProductRow;
+        return;
+    }
+
+    var is_superuser = document.getElementById("table").getAttribute("data-is_superuser");
+
     products.forEach(function (product) {
         var row = "<tr>" +
             "<td class='tableData'>" + product.prod_name + "</td>" +
@@ -51,13 +57,11 @@ function updateProductTable(products) {
             "<td class='tableData'>" + product.prod_id + "</td>" +
             "<td class='tableData btns'>";
 
-        // Add edit button
         row += "<form action='/inventory/edit/" + product.prod_id + "/' method='get'>" +
             "<button class='editBtn fa-btn' type='submit'><i class='fa-solid fa-pen'></i></button>" +
             "</form>";
 
-        // Add delete button if user is authenticated and is a superuser
-        if (product.is_superuser) {
+        if (is_superuser === "True") {
             row += "<form action='/inventory/delete/" + product.prod_id + "/' method='get'>" +
                 "<button class='deleteBtn fa-btn' type='submit'><i class='fa-solid fa-trash'></i></button>" +
                 "</form>";
