@@ -39,7 +39,7 @@ def add_product(request):
         new_product = Product(prod_id=prod_id,prod_name=prod_name, price=price, quantity=quantity)
         new_product.save()
         
-        transaction = Transaction.objects.create(prod_id=new_product, prod_name=prod_name, price=price, updated_quantity=quantity)
+        transaction = Transaction.objects.create(product=new_product, prod_name=prod_name, price=price, updated_quantity=quantity)
         transaction.save()
 
         messages.success(request, 'Product added successfully.')
@@ -62,7 +62,7 @@ def edit_product(request, product_id):
 
         if old_quantity != product.quantity:
             quantity_diff = product.quantity - old_quantity
-            transaction = Transaction.objects.create(prod_id=product, prod_name=product.prod_name, price=product.price, updated_quantity=quantity_diff)
+            transaction = Transaction.objects.create(product=product, prod_name=product.prod_name, price=product.price, updated_quantity=quantity_diff)
             transaction.save()
 
         messages.success(request, 'Product updated successfully.')
@@ -74,7 +74,7 @@ def delete_product(request, product_id):
         product = Product.objects.get(prod_id=product_id)
 
         Transaction.objects.create(
-            prod_id=product,
+            product=product,
             prod_name=product.prod_name,
             price=product.price,
             datetime=timezone.now(),
