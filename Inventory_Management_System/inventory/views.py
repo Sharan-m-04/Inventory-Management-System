@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.http import JsonResponse
+import mysql.connector
 
 # Create your views here.
 
