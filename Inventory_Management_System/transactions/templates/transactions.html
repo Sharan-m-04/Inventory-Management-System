@@ -1,4 +1,6 @@
 {% load static %}
+{% load tz %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,15 +43,32 @@
                     <th class="tableHead">Date & Time</th>
                     <th class="tableHead">Updated Quantity</th>
                 </tr>
+                {% for transaction in transactions %}
                 <tr>
-                    <td class="tableData">145</td>
-                    <td class="tableData">invms334</td>
-                    <td class="tableData">Product 1</td>
-                    <td class="tableData">199</td>
-                    <td class="tableData">{{ dateTimeFormat }}</td>
-                    <td class="tableData"><span class="plusMinus">+</span> 2</td>
-                    <td class="tableData"><i class="fa-solid fa-trash deleteBtn"></i></td>
+                    <td class="tableData">{{ transaction.product.prod_id }}</td>
+                    <td class="tableData">{{ transaction.formatted_t_id }}</td>
+                    <td class="tableData">{{ transaction.product.prod_name }}</td>
+                    <td class="tableData">{{ transaction.product.price }}</td>
+                    <td class="tableData">{{ transaction.datetime|timezone:"Asia/Kolkata"|date:"d-m-Y, h:i A" }}</td>
+                    <td class="tableData">
+                        {% if transaction.updated_quantity > 0 %}
+                        <span class="plusMinus plus">+{{ transaction.updated_quantity }}</span>
+                        {% elif transaction.updated_quantity == 0 %}
+                        {{ transaction.updated_quantity }}
+                        {% else %}
+                        <span class="plusMinus minus">{{ transaction.updated_quantity }}</span>
+                        {% endif %}
+                    </td>
+                    {% if is_superuser %}
+                    <td class="tableData">
+                        <form action="{% url 'delete_transaction' transaction.t_id %}" method="get">
+                            {% csrf_token %}
+                            <button class="deleteBtn fa-btn" type="submit"><i class="fa-solid fa-trash deleteBtn"></i></button>
+                        </form>
+                    </td>
+                    {% endif %}
                 </tr>
+                {% endfor %}
             </table>
         </div>
     </section>

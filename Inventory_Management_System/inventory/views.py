@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.http import JsonResponse
+from transactions.models import Transaction
+from django.utils import timezone
 import mysql.connector
 
 # Create your views here.
@@ -37,6 +39,9 @@ def add_product(request):
         new_product = Product(prod_id=prod_id,prod_name=prod_name, price=price, quantity=quantity)
         new_product.save()
         
+        transaction = Transaction.objects.create(prod_id=new_product, prod_name=prod_name, price=price, updated_quantity=quantity)
+        transaction.save()
+
         messages.success(request, 'Product added successfully.')
         return redirect('/inventory')
     else:
@@ -49,10 +54,17 @@ def edit_product(request, product_id):
         return render(request, 'edit.html', {'product': product})
     elif request.method == 'POST':
         product = Product.objects.get(prod_id=product_id)
+        old_quantity = product.quantity
         product.prod_name = request.POST.get('name')
         product.price = request.POST.get('price')
-        product.quantity = request.POST.get('quantity')
+        product.quantity = int(request.POST.get('quantity'))
         product.save()
+
+        if old_quantity != product.quantity:
+            quantity_diff = product.quantity - old_quantity
+            transaction = Transaction.objects.create(prod_id=product, prod_name=product.prod_name, price=product.price, updated_quantity=quantity_diff)
+            transaction.save()
+
         messages.success(request, 'Product updated successfully.')
         return redirect('/inventory')
 
@@ -60,6 +72,15 @@ def edit_product(request, product_id):
 def delete_product(request, product_id):
     if request.method == 'POST':
         product = Product.objects.get(prod_id=product_id)
+
+        Transaction.objects.create(
+            prod_id=product,
+            prod_name=product.prod_name,
+            price=product.price,
+            datetime=timezone.now(),
+            updated_quantity=-product.quantity
+        )
+
         product.delete()
         messages.success(request, f'Product "{product.prod_name}" deleted successfully.')
         return redirect('/inventory')

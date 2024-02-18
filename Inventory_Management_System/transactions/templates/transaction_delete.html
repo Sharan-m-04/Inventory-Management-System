@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management System | Delete Transaction</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f3f6ff;
+            border-radius: 15px;
+            text-align: center;
+            font-family: 'Poppins', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #00143c;
+            font-size: 40px;
+        }
+
+        .contact-form {
+            text-align: left;
+            color: #00143c;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e3eaff;
+            border-radius: 15px;
+            resize: none;
+        }
+
+        button[type="submit"] {
+            padding: 10px 30px 10px 30px;
+            border-radius: 50px;
+            background-color: #7499f1;
+            color: white;
+            border: none;
+            font-size: 16px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #a3bfff;
+            cursor: pointer;
+        }
+
+        .cancelBtn {
+            padding: 10px 30px 10px 30px;
+            border-radius: 50px;
+            background-color: #bdd1ff;
+            color: white;
+            border: none;
+            font-size: 16px;
+            display: block;
+            margin: 0 auto;
+            margin: 5px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .cancelBtn:hover {
+            background-color: #e2ebff;
+            cursor: pointer;
+        }
+
+        .btns {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        p {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="delete-section">
+        <div class="container">
+            <h1>Delete Transaction Confirmation</h1>
+            <p>Are you sure you want to delete this transaction permanently?</p>
+            <p>Transaction Id: {{ transaction.formatted_t_id }}</p>
+            <p>Product Id: {{ transaction.product.prod_id }}</p>
+            <p>Product Name: {{ transaction.product.prod_name }}</p>
+            <div class="btns">
+                <a href="/transactions"><button class="cancelBtn">Cancel</button></a>
+                <form action="{% url 'delete_transaction' transaction.t_id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

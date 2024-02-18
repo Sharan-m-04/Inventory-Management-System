@@ -153,6 +153,20 @@ html {
     cursor: pointer;
 }
 
+.plus {
+    color: #52be4f;
+}
+
+.minus {
+    color: #be4f4f;
+}
+
+.fa-btn {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
 /* Footer */
 
 footer {
