@@ -1,4 +1,5 @@
 {% load static %}
+{% load tz %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,37 +34,52 @@
 
     <section class="home-section">
         <div class="home-header">
-            <p class="home-heads">Stocks Overview</p>
-            <!-- <a href="/inventory"> -->
-                <img src="{% static 'Images/MoreIcon.png' %}" alt="See More" class="seeMore" onclick="inventoryRedir()">
-            <!-- </a> -->
+            <p class="home-heads">Low Stocks</p>
+            <img src="{% static 'Images/MoreIcon.png' %}" alt="See More" class="seeMore" onclick="inventoryRedir()">
         </div>
-        <div class="analytics-cards">
-            <div class="analytics-card">
-                <p class="msg">Warning!</p>
-                <p class="pname">Product 1</p>
-                <p class="currentStock">Current Stock: 2</p>
+        <div class="stock-cards">
+            {% for product in low_quantity_products %}
+            <div class="stock-card">
+                <div class="product-name">{{ product.prod_name }}</div>
+                <div class="stock-info">Stock Quantity: {{ product.quantity }}</div>
             </div>
-            <div class="analytics-card">
-                <p class="msg">Warning!</p>
-                <p class="pname">Product 2</p>
-                <p class="currentStock">Current Stock: 1</p>
-            </div>
-            <div class="analytics-card">
-                <p class="msg">Warning!</p>
-                <p class="pname">Product 8</p>
-                <p class="currentStock">Current Stock: 0</p>
-            </div>
+            {% endfor %}
         </div>
         <div class="home-header">
             <p class="home-heads">Transactions</p>
-            <!-- <a href="/transactions"> -->
-                <img src="{% static 'Images/MoreIcon.png' %}" alt="See More" class="seeMore" onclick="transactionsRedir()">
-            <!-- </a> -->
+            <img src="{% static 'Images/MoreIcon.png' %}" alt="See More" class="seeMore" onclick="transactionsRedir()">
         </div>
         <div class="transaction-cards">
-            <div class="transaction-card">
-
+            <div class="table">
+                <table class="productTable">
+                    <tr>
+                        <th class="tableHead">Product Id</th>
+                        <th class="tableHead">Transaction Id</th>
+                        <th class="tableHead">Product Name</th>
+                        <th class="tableHead">Price (in ₹)</th>
+                        <th class="tableHead">Date & Time</th>
+                        <th class="tableHead">Updated Quantity</th>
+                    </tr>
+                    {% for recent_transaction in recent_transactions %}
+                    <tr>
+                        <td class="tableData">{{ recent_transaction.product.prod_id }}</td>
+                        <td class="tableData">{{ recent_transaction.formatted_t_id }}</td>
+                        <td class="tableData">{{ recent_transaction.product.prod_name }}</td>
+                        <td class="tableData">{{ recent_transaction.product.price }}</td>
+                        <td class="tableData">{{ recent_transaction.datetime|timezone:"Asia/Kolkata"|date:"d-m-Y, h:i A" }}
+                        </td>
+                        <td class="tableData">
+                            {% if recent_transaction.updated_quantity > 0 %}
+                            <span class="plusMinus plus">+{{ recent_transaction.updated_quantity }}</span>
+                            {% elif recent_transaction.updated_quantity == 0 %}
+                            {{ recent_transaction.updated_quantity }}
+                            {% else %}
+                            <span class="plusMinus minus">{{ recent_transaction.updated_quantity }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
             </div>
         </div>
     </section>
