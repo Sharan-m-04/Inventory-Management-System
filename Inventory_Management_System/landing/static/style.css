@@ -76,6 +76,29 @@ html {
     margin: 5px 5px;
 }
 
+.navs {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.loginAnchor {
+    text-decoration: none;
+    background-color: #000d26;
+    padding: 8px 15px;
+    margin-right: 5px;
+    border-radius: 50px;
+    color: #edf3ff;
+    display: block;
+    margin: 10px;
+}
+
+.loginAnchor:hover {
+    background-color: #00266d;
+    cursor: pointer;
+}
+
 /* Home section */
 
 .home-section {
@@ -398,6 +421,16 @@ footer {
         transition: all 0.3s ease-out; */
         /* transition-delay: 0.3s; */
         display: none;
+    }
+
+    .navs {
+        justify-content: right;
+        margin-right: 30%;
+        position: absolute;
+    }
+
+    .loginAnchor {
+        font-size: 14px;
     }
 
 }

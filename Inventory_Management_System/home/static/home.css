@@ -104,6 +104,7 @@ body {
 .home-section {
     min-height: 100vh;
     padding-top: 100px;
+    overflow-x: hidden;
 }
 
 .home-header {
@@ -115,6 +116,7 @@ body {
 
 .home-heads {
     font-size: 24px;
+    font-weight: 500;
 }
 
 .seeMore:hover {
@@ -193,6 +195,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden;
 }
 
 .productTable {
@@ -355,6 +358,19 @@ footer {
     .feature {
         flex-basis: 100%;
     }
+
+    .table {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        overflow-x: scroll;
+    }
+
+    .tableHead,
+    tr,
+    td {
+        font-size: 14px;
+    }
 }
 
 @media only screen and (max-width: 790px) {
@@ -407,6 +423,17 @@ footer {
         transition: all 0.3s ease-out; */
         /* transition-delay: 0.3s; */
         display: none;
+    }
+
+    .navs {
+        align-items: center;
+        justify-content: right;
+        margin-right: 30%;
+        position: absolute;
+    }
+
+    .logout {
+        font-size: 14px;
     }
 
 }

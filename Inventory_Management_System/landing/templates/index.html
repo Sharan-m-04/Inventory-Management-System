@@ -8,20 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Management System</title>
     <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" >
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}">
 </head>
 
 <body>
     <header class="header">
         <nav class="navig h-nav-resp">
             <a href="/"><img src="{% static 'Images/logo.png' %}" alt="Logo" class="logo"></a>
-            <ul class="navul v-class-resp">
-                <li class="navc"><a href="/">Home</a></li>
-                <li class="navc"><a href="#about">About</a></li>
-                <li class="navc"><a href="#contact-us">Contact Us</a></li>
-                <!-- <li class="navc"><a href="/inventory">Inventory</a></li>
-                <li class="navc"><a href="/transactions">Transactions</a></li> -->
-            </ul>
+            <div class="navs">
+                <ul class="navul v-class-resp">
+                    <li class="navc"><a href="/">Home</a></li>
+                    <li class="navc"><a href="#about">About</a></li>
+                    <li class="navc"><a href="#contact-us">Contact Us</a></li>
+                </ul>
+                <div class="loginBtn navig"><a href="/accounts/login" class="loginAnchor">Login</a></div>
+            </div>
             <div class="burger">
                 <div class="line"></div>
                 <div class="line"></div>
