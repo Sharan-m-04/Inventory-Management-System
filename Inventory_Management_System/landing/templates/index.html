@@ -44,35 +44,28 @@
     <section class="about-section" id="about">
         <h1 class="title">About Us</h1>
         <p class="description">
-            At our platform, we understand the importance of efficient inventory management for businesses of all sizes.
-            Our system is designed to streamline the process of tracking products, ensuring you always have the right
-            items in stock when you need them.
+            Our platform is dedicated to empowering businesses of all sizes with efficient inventory management
+            solutions tailored to their specific needs. Recognizing the critical role that inventory plays in the
+            success of any enterprise, we have developed a comprehensive system designed to streamline the process of
+            tracking products from procurement to sale. One of our standout features is our low stock alerts, which
+            eliminate the risk of running out of essential items by automatically notifying users when products are
+            running low, enabling proactive replenishment to prevent disruptions in operations. Furthermore, our
+            platform provides real-time updates on stock status, offering users invaluable insights into their inventory
+            levels at any given moment. By accessing up-to-date information on current stock levels for all products,
+            businesses can make informed decisions to optimize their inventory management strategies. Additionally, our
+            transaction history feature allows users to maintain a detailed record of all inventory movements,
+            facilitating better tracking, analysis, and accountability. Whether you're a small startup or a large
+            corporation, our platform is committed to helping you maintain optimal inventory levels, minimize stockouts,
+            and maximize operational efficiency.
         </p>
-        <div class="features">
-            <div class="feature">
-                <h2 class="feature-title">Low Stock Alerts</h2>
-                <p class="feature-description">Never run out of essential items again. Our platform automatically alerts
-                    you when products are running low, allowing you to replenish stock levels before it becomes a
-                    problem.</p>
-            </div>
-            <div class="feature">
-                <h2 class="feature-title">Real-Time Stock Status</h2>
-                <p class="feature-description">Gain valuable insights into your inventory with up-to-date information on
-                    the current stock levels of all your products.</p>
-            </div>
-            <div class="feature">
-                <h2 class="feature-title">Transaction History</h2>
-                <p class="feature-description">Keep track of all inventory movements with our comprehensive transaction
-                    history feature.</p>
-            </div>
-        </div>
         <a href="/accounts/login"><button class="abt-btn">Log In</button></a>
     </section>
 
     <section class="contact-section" id="contact-us">
         <div class="container">
             <h1>Contact Us</h1>
-            <form id="contact-form" class="contact-form" action="#" method="post">
+            <form id="feedbackForm" class="contact-form" action="#" method="post">
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
@@ -98,14 +91,41 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact-us">Contact Us</a></li>
-                    <!-- <li><a href="/inventory">Inventory</a></li>
-                    <li><a href="/transactions">Transactions</a></li> -->
                 </ul>
             </nav>
             <p>Inventory Management System</p>
         </div>
     </footer>
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const formData = new FormData(this);
 
+            fetch(window.location.pathname, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Feedback submitted successfully');
+                    } else {
+                        alert('Error submitting feedback');
+                    }
+                })
+                .catch(error => {
+                    alert('Error submitting feedback:', error);
+                });
+        });
+
+        function getCookie(name) {
+            const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+            return cookieValue ? cookieValue.pop() : '';
+        }
+
+    </script>
     <script src="{% static 'script.js' %}" type="text/javascript"></script>
 </body>
 

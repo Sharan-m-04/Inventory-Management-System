@@ -21,6 +21,9 @@
                     <li class="navc"><a href="/dashboard">Dashboard</a></li>
                     <li class="navc"><a href="/inventory">Inventory</a></li>
                     <li class="navc"><a href="/transactions">Transactions</a></li>
+                    {% if user.is_authenticated and user.is_superuser %}
+                    <li class="navc"><a href="/feedbacks">Feedbacks</a></li>
+                    {% endif %}
                 </ul>
                 <div class="logout navig" onclick="logout()">Log out</div>
             </div>
@@ -66,8 +69,7 @@
                         <td class="tableData">{{ recent_transaction.formatted_t_id }}</td>
                         <td class="tableData">{{ recent_transaction.product.prod_name }}</td>
                         <td class="tableData">{{ recent_transaction.product.price }}</td>
-                        <td class="tableData">{{ recent_transaction.datetime|timezone:"Asia/Kolkata"|date:"d-m-Y, h:i A" }}
-                        </td>
+                        <td class="tableData">{{ recent_transaction.datetime|timezone:"Asia/Kolkata"|date:"d-m-Y, h:i A" }}</td>
                         <td class="tableData">
                             {% if recent_transaction.updated_quantity > 0 %}
                             <span class="plusMinus plus">+{{ recent_transaction.updated_quantity }}</span>

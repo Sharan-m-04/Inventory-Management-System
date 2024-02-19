@@ -19,6 +19,9 @@
                     <li class="navc"><a href="/dashboard">Dashboard</a></li>
                     <li class="navc"><a href="/inventory">Inventory</a></li>
                     <li class="navc"><a href="/transactions">Transactions</a></li>
+                    {% if user.is_authenticated and user.is_superuser %}
+                    <li class="navc"><a href="/feedbacks">Feedbacks</a></li>
+                    {% endif %}
                 </ul>
                 <div class="logout navig" onclick="logout()">Log out</div>
             </div>
