@@ -107,6 +107,12 @@ body {
     overflow-x: hidden;
 }
 
+.greetings {
+    font-size: 32px;
+    font-weight: 500;
+    margin-left: 20px;
+}
+
 .home-header {
     display: flex;
     align-items: center;
