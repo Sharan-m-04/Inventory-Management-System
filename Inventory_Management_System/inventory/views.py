@@ -42,7 +42,6 @@ def add_product(request):
         transaction = Transaction.objects.create(product=new_product, prod_name=prod_name, price=price, updated_quantity=quantity)
         transaction.save()
 
-        messages.success(request, 'Product added successfully.')
         return redirect('/inventory')
     else:
         return render(request, 'add.html')
@@ -65,7 +64,6 @@ def edit_product(request, product_id):
             transaction = Transaction.objects.create(product=product, prod_name=product.prod_name, price=product.price, updated_quantity=quantity_diff)
             transaction.save()
 
-        messages.success(request, 'Product updated successfully.')
         return redirect('/inventory')
 
 @login_required
@@ -82,7 +80,6 @@ def delete_product(request, product_id):
         )
 
         product.delete()
-        messages.success(request, f'Product "{product.prod_name}" deleted successfully.')
         return redirect('/inventory')
     else:
         product = Product.objects.get(prod_id=product_id)

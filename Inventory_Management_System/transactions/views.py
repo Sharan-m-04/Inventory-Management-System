@@ -19,7 +19,6 @@ def delete_transaction(request, t_id):
     if request.method == 'POST':
         transaction = Transaction.objects.get(t_id=t_id)
         transaction.delete()
-        messages.success(request, f'Transaction "{transaction.t_id}" deleted successfully.')
         return redirect('/transactions')
     else:
         transaction = get_object_or_404(Transaction, t_id=t_id)
