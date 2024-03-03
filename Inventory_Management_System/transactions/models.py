@@ -2,7 +2,6 @@ from django.db import models
 from inventory.models import Product
 
 # Create your models here.
-
 class Transaction(models.Model):
     t_id = models.AutoField(primary_key=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
