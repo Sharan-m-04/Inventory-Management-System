@@ -1,1 +1,0 @@
-SELECT * FROM transactions ORDER BY datetime DESC;
