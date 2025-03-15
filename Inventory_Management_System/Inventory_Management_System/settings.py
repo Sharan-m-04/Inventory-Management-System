@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-bav*hfmjmc4mu$&3!h1u925s8-fqtjqa8t&xdy4wzjbo*gjnvo'
+SECRET_KEY = 'YOUR_DJANGO_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -88,9 +88,9 @@ WSGI_APPLICATION = 'Inventory_Management_System.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'YOUR_DATABASE_NAME',
-        'USER': 'YOUR_USERNAME',
-        'PASSWORD': 'YOUR_PASSWORD',
+        'NAME': 'inventoryms',
+        'USER': 'sharan',
+        'PASSWORD': 'Sharandb4',
         'HOST': 'localhost',
         'PORT': '3306',
     }
