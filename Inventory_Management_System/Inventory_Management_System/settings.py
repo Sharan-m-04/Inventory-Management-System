@@ -88,11 +88,11 @@ WSGI_APPLICATION = 'Inventory_Management_System.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'inventoryms',
-        'USER': 'sharan',
-        'PASSWORD': 'Sharandb4',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': 'DATABASE_NAME',
+        'USER': 'YOUR_USERNAME',
+        'PASSWORD': 'YOUR_PASSWORD',
+        'HOST': 'YOUR_HOST',
+        'PORT': 'YOUR_PORT',
     }
 }
 
